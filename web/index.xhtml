@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <link href="style.css" rel="stylesheet" type="text/css" />
+        <!--<h:outputStylesheet name="css/stylesheet.css" />-->
+
+        <title>Авторизация</title>
+    </head>
+
+    <body>
+        <h1> Авторизация пользователя </h1>
+        <div>
+            <p>
+                Для доступа к базе данных необходима авторизация. Пожалуйста, введите ваш логин и пароль:
+            </p>
+        </div>
+
+        <div class=" autor ">
+            <h:form>
+                <p> <label>Логин*: <br/>
+                        <h:inputText value="#{CustomerBean.login}" />
+                    </label>
+                    <div class="error">
+                        <h:outputLabel value="Поле логин обязательно для ввода!" rendered="#{empty CustomerBean.login and not empty CustomerBean.flag }" />
+                    </div>
+                </p>
+                <p> <label>Пароль*: <br/>
+                        <h:inputSecret value="#{CustomerBean.password}" />
+                    </label>
+                    <div class="error">
+                        <h:outputLabel value="Поле пароль обязательно для ввода!" rendered="#{empty CustomerBean.password and not empty CustomerBean.flag}" />
+                    </div>
+
+                </p>
+                <p>
+                    <h:commandButton value="Войти" action="#{CustomerBean.sessUser}"/>
+                </p>
+            </h:form>
+
+            <div class="error">
+                <h:outputLabel value="Пользователь не найден!" rendered="#{empty CustomerBean.user and !empty CustomerBean.password and !empty CustomerBean.login}" />
+            </div>
+
+        </div>
+
+    </body>
+</html>

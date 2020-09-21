@@ -1,0 +1,83 @@
+a{
+    color:black;
+    font-size:20px;
+}
+
+div
+{
+    font-size:20px;	
+}
+a:hover { 
+    color:blue;
+}
+
+.textError
+{
+    color:white;
+    font-size:30px;
+}
+
+.error
+{
+    color:red;
+    font-size:16px;
+}
+
+.fail
+{
+
+    background-color:red;
+    border:7px solid black;	
+    margin:auto;
+    text-align:center;
+
+}
+
+.autor
+{
+
+    width:100%;
+    height:100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin:auto;
+    text-align:center;
+
+}
+
+.divCenter
+{
+    text-align:center;
+}
+
+h1
+{
+    text-align:center;
+}
+
+th, td {border: 1px solid grey;}
+
+th {
+    background: #ff00f6;
+}
+
+table{
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin:auto;
+
+    font-size:20px;
+    text-align: center;
+    border:2px black;
+}
+
+.divBottomRight
+{
+    text-align:bottom;
+    text-align:right;
+}
+

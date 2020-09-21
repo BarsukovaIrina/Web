@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <head>
+        <title>Списки</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+
+        <h:panelGroup rendered="#{empty CustomerBean.user}">
+            <div class="fail textError">
+                <p>Что-то пошло не так. Для перехода на исходную страницу перейдите по ссылке:
+
+                    <a> <h:link value="Назад" outcome="index"/> </a>
+                </p>
+            </div>
+            <!--<meta http-equiv="refresh" content="5;index">-->
+        </h:panelGroup>
+
+        <h:panelGroup rendered="#{not empty CustomerBean.user}">     
+            <h1>Список клиник</h1>
+            <div class="divCenter">
+                <p> 
+                    Здравствуйте, #{CustomerBean.login}:
+                </p>
+            </div>
+
+            <div class="divCenter">
+                <p> 
+                    Ваш список клиник.
+                </p>
+
+                <ui:repeat var="clinic" value="#{CustomerBean.user.clinics}">
+
+                    Клиника #{clinic.ID}
+                    <h:dataTable value="#{clinic.visits}" var="o"  styleClass="visits">
+                        <h:column>
+                            <f:facet name="header">
+                                ID
+                            </f:facet>
+                            #{o.ID}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                Type
+                            </f:facet>
+                            #{o.type}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                unitPrice
+                            </f:facet>
+                            #{o.unitPrice}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                Quantity
+                            </f:facet>
+                            #{o.quantity}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                Cost
+                            </f:facet>
+                            #{o.cost}
+                        </h:column>
+
+
+                    </h:dataTable>
+                </ui:repeat>
+            </div>
+
+            <div class="divBottomRight">
+                <p>
+                    <h:link value="Назад" outcome="index"/> 
+                </p>
+                <p>
+                    <h:form>
+                        <h:commandLink value="Download" action="#{CustomerBean.loadXML}"/> 
+                    </h:form>
+
+                </p>
+            </div>
+        </h:panelGroup>
+
+
+    </body>
+
+</html>
